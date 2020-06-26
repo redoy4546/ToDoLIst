@@ -1,0 +1,48 @@
+<%- include("header") -%>
+
+    <section id="wraper">
+      <div class="container">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-6 m-auto d-flex flex-column align-items-center">
+            <div class="timeHead mt-5 px-5 pt-2">
+              <h3><%= listTitle %></h3>
+            </div>
+
+            <div class="list w-100 mb-3">
+              <ul class="list-group this-list">
+                <% listItems.forEach(function(item){ %>
+
+                  <li class="list-group-item d-flex justify-content-between">
+                    <form action="/delete" method="POST">
+                    <div class="">
+                      <input type="checkbox" value="<%= item._id %>" name="checkbox" onchange="this.form.submit()" class="mr-2" id="items" />
+                      <label for="Items"><%= item.name %></label>
+                    </div>
+                    <input type="hidden" name="listName" value="<%= listTitle %>">
+                  </form>
+                    <span class="btnn">&times;</span>
+                  
+                  </li>
+
+               <% }) %>
+                
+                
+              </ul>
+            </div>
+            <form action="/" class="d-flex w-100" method="POST">
+              <input
+                type="text"
+                name="item"
+                class="form-control d-block"
+                placeholder="Add New Goal"
+                autocomplete="off"
+              />
+
+              <button type="submit" class=" btn" name="list" value=<%= listTitle %> </button>ADD</button>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%- include("footer") -%>
